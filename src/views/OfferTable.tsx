@@ -1,4 +1,5 @@
 import React from 'react';
+import { decode } from 'he';
 import { OfferOverview } from '../types';
 import { Column, Table } from '../components';
 
@@ -27,7 +28,7 @@ const columns: Column<OfferOverview>[] = [
     key: 'price',
     label: 'Price',
     render: (row) =>
-      `${row.offer.currency_symbol}${row.offer.price ?? ''} ${row.offer.currency_iso}`,
+      `${decode(row.offer.currency_symbol)}${row.offer.price ?? ''} ${row.offer.currency_iso}`,
   },
   {
     key: 'link',

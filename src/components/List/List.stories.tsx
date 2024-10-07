@@ -18,7 +18,7 @@ const generateMockData = (count: number): MockListItemType[] => {
 };
 
 const meta: Meta<typeof List<MockListItemType>> = {
-  title: 'Generic/List',
+  title: 'Components/List',
   component: List<MockListItemType>,
   parameters: {
     layout: 'centered',

@@ -41,26 +41,28 @@
   .stack-on-small .table-row,
   .stack-on-small .table-cell {
     @apply block w-full;
+    margin: 0;
+    text-align: center;
+  }
+
+  .stack-on-small img {
+    @apply mx-auto block;
   }
 
   .stack-on-small .table-cell {
-    @apply border-t py-3 px-4;
+    @apply py-3 px-4;
     max-width: none;
     @apply whitespace-normal;
     @apply overflow-visible;
+    @apply border-0;
   }
 
   .stack-on-small .table-cell::before {
-    content: attr(data-label); /* displays header label inside each cell */
+    content: attr(data-label);
     @apply block font-semibold text-gray-600 mb-1;
   }
 
-  .stack-on-small .table-header-cell,
-  .stack-on-small .table-cell {
-    @apply px-2 py-2 text-sm;
-  }
-
   .stack-on-small .table-row {
-    @apply mb-4 p-4 border border-gray-300 rounded-lg;
+    @apply p-4 border-b border-gray-300;
   }
 }

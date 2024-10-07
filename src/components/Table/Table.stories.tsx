@@ -55,103 +55,94 @@ export const SingleRow: Story = {
   },
 };
 
-const columnsWithConditionalAge: Column<MockTableDataType>[] = [
-  { key: 'id', label: 'ID', render: (row) => row.id },
-  { key: 'name', label: 'Name', render: (row) => row.name },
-  {
-    key: 'age',
-    label: 'Age',
-    render: (row) => (
-      <span style={{ color: row.age > 50 ? 'red' : 'black' }}>{row.age}</span>
-    ),
+export const WithoutStackedOnSmall: Story = {
+  args: {
+    data: generateMockData(5),
+    columns,
+    isStackedOnSmallScreens: false,
   },
-];
+};
 
 export const ConditionalAgeStyling: Story = {
   args: {
     data: generateMockData(10),
-    columns: columnsWithConditionalAge,
+    columns: columns.map((col) => ({
+      ...col,
+      render:
+        col.key === 'age'
+          ? (row) => (
+              <span style={{ color: row.age > 50 ? 'red' : 'black' }}>
+                {row.age}
+              </span>
+            )
+          : col.render,
+    })),
   },
 };
-
-const columnsWithLinks: Column<MockTableDataType>[] = [
-  { key: 'id', label: 'ID', render: (row) => row.id },
-  {
-    key: 'name',
-    label: 'Name',
-    render: (row) => (
-      <a
-        href={`https://example.com/users/${row.id}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {row.name}
-      </a>
-    ),
-  },
-  { key: 'age', label: 'Age', render: (row) => <strong>{row.age}</strong> },
-];
 
 export const NameWithLink: Story = {
   args: {
     data: generateMockData(5),
-    columns: columnsWithLinks,
+    columns: columns.map((col) => ({
+      ...col,
+      render:
+        col.key === 'name'
+          ? (row) => (
+              <a
+                href={`https://example.com/users/${row.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {row.name}
+              </a>
+            )
+          : col.render,
+    })),
   },
 };
-
-const columnsWithActions: Column<MockTableDataType>[] = [
-  { key: 'id', label: 'ID', render: (row) => row.id },
-  { key: 'name', label: 'Name', render: (row) => row.name },
-  { key: 'age', label: 'Age', render: (row) => <strong>{row.age}</strong> },
-  {
-    key: 'actions',
-    label: 'Actions',
-    render: (row) => (
-      <button
-        className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-        onClick={() => alert(`Editing user ${row.name}`)}
-      >
-        Edit
-      </button>
-    ),
-  },
-];
 
 export const WithEditButton: Story = {
   args: {
     data: generateMockData(5),
-    columns: columnsWithActions,
+    columns: columns.concat({
+      key: 'actions',
+      label: 'Actions',
+      render: (row) => (
+        <button
+          className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+          onClick={() => alert(`Editing user ${row.name}`)}
+        >
+          Edit
+        </button>
+      ),
+    }),
   },
 };
-
-const columnsWithAvatars: Column<MockTableDataType>[] = [
-  { key: 'id', label: 'ID', render: (row) => row.id },
-  {
-    key: 'name',
-    label: 'Name',
-    render: (row) => (
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img
-          src={faker.image.avatar()}
-          alt={row.name}
-          style={{
-            width: '30px',
-            height: '30px',
-            borderRadius: '50%',
-            marginRight: '10px',
-          }}
-        />
-        {row.name}
-      </div>
-    ),
-  },
-  { key: 'age', label: 'Age', render: (row) => <strong>{row.age}</strong> },
-];
 
 export const NameWithAvatar: Story = {
   args: {
     data: generateMockData(5),
-    columns: columnsWithAvatars,
+    columns: columns.map((col) => ({
+      ...col,
+      render:
+        col.key === 'name'
+          ? (row) => (
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <img
+                  src={faker.image.avatar()}
+                  alt={row.name}
+                  style={{
+                    width: '30px',
+                    height: '30px',
+                    borderRadius: '50%',
+                    marginRight: '10px',
+                  }}
+                />
+                {row.name}
+              </div>
+            )
+          : col.render,
+    })),
   },
 };
 
