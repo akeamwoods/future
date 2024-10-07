@@ -1,0 +1,7 @@
+.list-container {
+  @apply grid grid-cols-1 gap-6;
+}
+
+.list-item {
+  @apply border border-gray-300 rounded-lg overflow-hidden;
+}

@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { faker } from '@faker-js/faker';
-import { Column, Table } from './Table';
+import Table, { Column } from './Table';
 
-interface TableDataType {
+interface MockTableDataType {
   id: number;
   name: string;
   age: number;
 }
 
-const generateFakeData = (count: number): TableDataType[] => {
+const generateMockData = (count: number): MockTableDataType[] => {
   return Array.from({ length: count }, (_, index) => ({
     id: index + 1,
     name: faker.person.fullName(),
@@ -16,9 +16,9 @@ const generateFakeData = (count: number): TableDataType[] => {
   }));
 };
 
-const exampleData: TableDataType[] = generateFakeData(3);
+const mockData: MockTableDataType[] = generateMockData(3);
 
-const columns: Column<TableDataType>[] = [
+const columns: Column<MockTableDataType>[] = [
   { key: 'id', label: 'ID', render: (row) => row.id },
   { key: 'name', label: 'Name', render: (row) => row.name },
   {
@@ -28,9 +28,9 @@ const columns: Column<TableDataType>[] = [
   },
 ];
 
-const meta: Meta<typeof Table<TableDataType>> = {
-  title: 'Example/Table',
-  component: Table<TableDataType>,
+const meta: Meta<typeof Table<MockTableDataType>> = {
+  title: 'Components/Table',
+  component: Table<MockTableDataType>,
   parameters: {
     layout: 'centered',
   },
@@ -43,19 +43,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    data: exampleData,
+    data: mockData,
     columns,
   },
 };
 
 export const SingleRow: Story = {
   args: {
-    data: generateFakeData(1),
+    data: generateMockData(1),
     columns,
   },
 };
 
-const columnsWithConditionalAge: Column<TableDataType>[] = [
+const columnsWithConditionalAge: Column<MockTableDataType>[] = [
   { key: 'id', label: 'ID', render: (row) => row.id },
   { key: 'name', label: 'Name', render: (row) => row.name },
   {
@@ -69,12 +69,12 @@ const columnsWithConditionalAge: Column<TableDataType>[] = [
 
 export const ConditionalAgeStyling: Story = {
   args: {
-    data: generateFakeData(10),
+    data: generateMockData(10),
     columns: columnsWithConditionalAge,
   },
 };
 
-const columnsWithLinks: Column<TableDataType>[] = [
+const columnsWithLinks: Column<MockTableDataType>[] = [
   { key: 'id', label: 'ID', render: (row) => row.id },
   {
     key: 'name',
@@ -94,12 +94,12 @@ const columnsWithLinks: Column<TableDataType>[] = [
 
 export const NameWithLink: Story = {
   args: {
-    data: generateFakeData(5),
+    data: generateMockData(5),
     columns: columnsWithLinks,
   },
 };
 
-const columnsWithActions: Column<TableDataType>[] = [
+const columnsWithActions: Column<MockTableDataType>[] = [
   { key: 'id', label: 'ID', render: (row) => row.id },
   { key: 'name', label: 'Name', render: (row) => row.name },
   { key: 'age', label: 'Age', render: (row) => <strong>{row.age}</strong> },
@@ -119,12 +119,12 @@ const columnsWithActions: Column<TableDataType>[] = [
 
 export const WithEditButton: Story = {
   args: {
-    data: generateFakeData(5),
+    data: generateMockData(5),
     columns: columnsWithActions,
   },
 };
 
-const columnsWithAvatars: Column<TableDataType>[] = [
+const columnsWithAvatars: Column<MockTableDataType>[] = [
   { key: 'id', label: 'ID', render: (row) => row.id },
   {
     key: 'name',
@@ -150,14 +150,14 @@ const columnsWithAvatars: Column<TableDataType>[] = [
 
 export const NameWithAvatar: Story = {
   args: {
-    data: generateFakeData(5),
+    data: generateMockData(5),
     columns: columnsWithAvatars,
   },
 };
 
 export const LargeDataset: Story = {
   args: {
-    data: generateFakeData(50),
+    data: generateMockData(50),
     columns,
   },
 };

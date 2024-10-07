@@ -1,0 +1,66 @@
+.table-container {
+  @apply overflow-x-auto bg-white shadow-lg rounded-lg;
+}
+
+.table {
+  @apply min-w-full border-collapse border border-gray-200 table-auto rounded-lg;
+}
+
+.table-header {
+  @apply bg-gray-100 text-gray-700;
+}
+
+.table-header-cell {
+  @apply px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase border-b;
+}
+
+.table-body {
+  @apply bg-white divide-y divide-gray-100;
+}
+
+.table-row {
+  @apply hover:bg-gray-50 focus-within:bg-gray-50 transition duration-300 ease-in-out;
+}
+
+.table-cell {
+  @apply px-6 py-4 text-sm text-gray-900 border-b;
+  @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  max-width: 250px;
+}
+
+@media (max-width: 640px) {
+  .stack-on-small .table {
+    @apply block;
+  }
+
+  .stack-on-small .table-header {
+    @apply hidden;
+  }
+
+  .stack-on-small .table-body,
+  .stack-on-small .table-row,
+  .stack-on-small .table-cell {
+    @apply block w-full;
+  }
+
+  .stack-on-small .table-cell {
+    @apply border-t py-3 px-4;
+    max-width: none;
+    @apply whitespace-normal;
+    @apply overflow-visible;
+  }
+
+  .stack-on-small .table-cell::before {
+    content: attr(data-label); /* displays header label inside each cell */
+    @apply block font-semibold text-gray-600 mb-1;
+  }
+
+  .stack-on-small .table-header-cell,
+  .stack-on-small .table-cell {
+    @apply px-2 py-2 text-sm;
+  }
+
+  .stack-on-small .table-row {
+    @apply mb-4 p-4 border border-gray-300 rounded-lg;
+  }
+}

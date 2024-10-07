@@ -1,86 +1,39 @@
-import { OfferOverview } from './types';
-import { Table, Column } from './components/Table';
+import { Suspense, useState } from 'react';
 import { useOffers } from './hooks/useOffers';
+import React from 'react';
 
-const columns: Column<OfferOverview>[] = [
-  {
-    key: 'image',
-    label: 'Image',
-    render: (row) => {
-      return row.image ? (
-        <img
-          src={row.image}
-          alt={`Image of ${row.offer.name}`}
-          className="w-16 h-16 object-contain"
-        />
-      ) : (
-        'No Image Available'
-      );
-    },
-  },
-  {
-    key: 'offerName',
-    label: 'Offer Name',
-    render: (row) => row.offer.name || 'No Name Available',
-  },
-  {
-    key: 'price',
-    label: 'Price',
-    render: (row) =>
-      `${row.offer.currency_symbol}${row.offer.price ?? ''} ${row.offer.currency_iso}`,
-  },
-  {
-    key: 'link',
-    label: 'Link',
-    render: (row) =>
-      row.offer.link ? (
-        <a
-          href={row.offer.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 underline"
-        >
-          View Offer
-        </a>
-      ) : (
-        'No Link Available'
-      ),
-  },
-  {
-    key: 'merchantName',
-    label: 'Merchant',
-    render: (row) => row.merchant.name || 'Unknown Merchant',
-  },
-  {
-    key: 'merchantLogo',
-    label: 'Merchant Logo',
-    render: (row) =>
-      row.merchant.logo_url ? (
-        <img
-          src={row.merchant.logo_url}
-          alt={`${row.merchant.name} Logo`}
-          className="w-12 h-12 object-contain"
-        />
-      ) : (
-        'No Logo Available'
-      ),
-  },
-];
+// Code splitting/lazy loading for better performance
+const OfferList = React.lazy(() =>
+  import('./views').then((module) => ({ default: module.OfferList })),
+);
+const OfferTable = React.lazy(() =>
+  import('./views').then((module) => ({ default: module.OfferTable })),
+);
 
 function App() {
   const { data: offers, isLoading, isError } = useOffers();
+  const [isTableView, setIsTableView] = useState(false);
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error fetching offers</p>;
 
   return (
-    <div>
+    <div style={{ margin: '0 auto', maxWidth: '1080px' }}>
       <h1>Offers</h1>
-      {offers ? (
-        <Table<OfferOverview> data={offers} columns={columns} />
-      ) : (
-        <p>No offers available</p>
-      )}
+      <button
+        className="mb-4 bg-blue-500 text-white px-4 py-2 rounded"
+        onClick={() => setIsTableView(!isTableView)}
+      >
+        Toggle {isTableView ? 'Card' : 'Table'} View
+      </button>
+
+      <Suspense fallback={<p>Loading view...</p>}>
+        {isTableView ? (
+          <OfferTable data={offers ?? []} />
+        ) : (
+          <OfferList offers={offers ?? []} />
+        )}
+      </Suspense>
     </div>
   );
 }
