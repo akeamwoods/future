@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchOffers } from '../api/offersApi';
-import { OfferOverview } from '../types';
+import { fetchOffers } from '@api';
+import { OfferOverview } from '@types';
 
 export const useOffers = () => {
   return useQuery<OfferOverview[]>({

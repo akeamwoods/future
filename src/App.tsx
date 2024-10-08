@@ -1,13 +1,13 @@
 import { Suspense, useState } from 'react';
-import { useOffers } from './hooks/useOffers';
 import React from 'react';
+import { useOffers } from '@hooks';
 
 // Code splitting/lazy loading for better performance
 const OfferList = React.lazy(() =>
-  import('./views').then((module) => ({ default: module.OfferList })),
+  import('@views').then((module) => ({ default: module.OfferList })),
 );
 const OfferTable = React.lazy(() =>
-  import('./views').then((module) => ({ default: module.OfferTable })),
+  import('@views').then((module) => ({ default: module.OfferTable })),
 );
 
 function App() {

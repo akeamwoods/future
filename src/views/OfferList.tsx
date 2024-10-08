@@ -1,7 +1,7 @@
 import React from 'react';
 import { decode } from 'he';
-import { OfferOverview } from '../types';
-import { List } from '../components';
+import { OfferOverview } from '@types';
+import { List } from '@components';
 import './OfferList.css';
 
 interface OfferListProps {

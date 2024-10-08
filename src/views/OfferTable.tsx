@@ -1,7 +1,7 @@
 import React from 'react';
 import { decode } from 'he';
-import { OfferOverview } from '../types';
-import { Column, Table } from '../components';
+import { OfferOverview } from '@types';
+import { Column, Table } from '@components';
 
 const columns: Column<OfferOverview>[] = [
   {

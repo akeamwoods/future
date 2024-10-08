@@ -35,6 +35,13 @@ export default [
         { allowConstantExport: true },
       ],
     },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.app.json',
+        },
+      },
+    },
   },
   eslintConfigPrettier,
 ];
