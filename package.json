@@ -1,4 +1,5 @@
 {
+  "homepage": "https://akeamwoods.github.io/future",
   "name": "future",
   "private": true,
   "version": "0.0.0",
@@ -12,7 +13,9 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.3",
@@ -54,6 +57,7 @@
     "eslint-plugin-react-hooks": "5.1.0-rc-fb9a90fa48-20240614",
     "eslint-plugin-react-refresh": "^0.4.12",
     "eslint-plugin-storybook": "^0.9.0",
+    "gh-pages": "^6.1.1",
     "globals": "^15.9.0",
     "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
