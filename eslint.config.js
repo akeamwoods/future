@@ -43,5 +43,17 @@ export default [
       },
     },
   },
+  {
+    files: ['**/*.test.{ts,tsx,js,jsx}', '**/*.spec.{ts,tsx,js,jsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.jest,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'warn',
+    },
+  },
   eslintConfigPrettier,
 ];
