@@ -1,9 +1,8 @@
-import React from 'react';
 import { decode } from 'he';
+import { Column } from '@components';
 import { OfferOverview } from '@types';
-import { Column, Table } from '@components';
 
-const columns: Column<OfferOverview>[] = [
+export const Columns: Column<OfferOverview>[] = [
   {
     key: 'image',
     label: 'Image',
@@ -67,13 +66,3 @@ const columns: Column<OfferOverview>[] = [
       ),
   },
 ];
-
-interface OfferTableProps {
-  data: OfferOverview[];
-}
-
-const OfferTable: React.FC<OfferTableProps> = ({ data }) => {
-  return <Table data={data} columns={columns} />;
-};
-
-export default OfferTable;

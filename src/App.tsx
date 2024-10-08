@@ -1,6 +1,8 @@
 import { Suspense, useState } from 'react';
 import React from 'react';
 import { useOffers } from '@hooks';
+import { SkeletonTable } from '@components';
+import { Columns } from '@views';
 
 // Code splitting/lazy loading for better performance
 const OfferList = React.lazy(() =>
@@ -14,7 +16,6 @@ function App() {
   const { data: offers, isLoading, isError } = useOffers();
   const [isTableView, setIsTableView] = useState(true);
 
-  if (isLoading) return <p>Loading offers, please wait...</p>;
   if (isError)
     return <p>There was an error fetching offers. Please try again later.</p>;
 
@@ -30,13 +31,17 @@ function App() {
         </button>
       </header>
 
-      <Suspense fallback={<p>Loading view...</p>}>
-        {isTableView ? (
-          <OfferTable data={offers ?? []} />
-        ) : (
-          <OfferList offers={offers ?? []} />
-        )}
-      </Suspense>
+      {isLoading ? (
+        <SkeletonTable columns={Columns} numRows={4} />
+      ) : (
+        <Suspense fallback={<SkeletonTable columns={Columns} numRows={4} />}>
+          {isTableView ? (
+            <OfferTable data={offers ?? []} />
+          ) : (
+            <OfferList offers={offers ?? []} />
+          )}
+        </Suspense>
+      )}
     </div>
   );
 }
