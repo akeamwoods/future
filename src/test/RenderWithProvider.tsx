@@ -1,8 +1,13 @@
 import React from 'react';
 import { render, RenderOptions } from '@testing-library/react';
-import { TestProvider } from './TestProvider';
+import { QueryClientWrapper } from './QueryClientWrapper';
 
 export const RenderWithProvider = (
   ui: React.ReactElement,
   options?: Omit<RenderOptions, 'queries'>,
-) => render(ui, { wrapper: TestProvider, ...options });
+) => {
+  return render(ui, {
+    wrapper: QueryClientWrapper,
+    ...options,
+  });
+};

@@ -12,6 +12,7 @@ const OfferList: React.FC<OfferListProps> = ({ offers }) => {
   return (
     <List
       data={offers}
+      testId="offers-list"
       renderItem={(offer) => (
         <div className="offer-card">
           <div className="offer-image-container">

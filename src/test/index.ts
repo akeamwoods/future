@@ -1,4 +1,5 @@
+import { mockOffers } from './mocks';
+import { QueryClientWrapper } from './QueryClientWrapper';
 import { RenderWithProvider } from './RenderWithProvider';
-import { TestProvider } from './TestProvider';
 
-export { RenderWithProvider, TestProvider };
+export { RenderWithProvider, QueryClientWrapper, mockOffers };

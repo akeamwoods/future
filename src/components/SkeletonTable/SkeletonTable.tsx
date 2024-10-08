@@ -10,7 +10,7 @@ const SkeletonTable = <T extends object>({
   numRows = 4,
 }: SkeletonTableProps<T>) => {
   return (
-    <div className="table-container">
+    <div className="table-container" data-testid="skeleton-table">
       <table className="table">
         <thead className="table-header">
           <tr>
@@ -26,7 +26,10 @@ const SkeletonTable = <T extends object>({
             <tr key={rowIndex} className="table-row animate-pulse">
               {columns.map((_column, colIndex) => (
                 <td key={colIndex} className="table-cell">
-                  <div className="bg-gray-300 h-6 rounded-md w-full"></div>
+                  <div
+                    className="bg-gray-300 h-6 rounded-md w-full"
+                    data-testid="skeleton-cell"
+                  ></div>
                 </td>
               ))}
             </tr>
