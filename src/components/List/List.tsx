@@ -12,13 +12,13 @@ const List = <T extends object>({ data, renderItem }: ListProps<T>) => {
   }
 
   return (
-    <div className="list-container">
+    <ul className="list-container">
       {data.map((item, index) => (
-        <div key={index} className="list-item">
+        <li key={index} className="list-item">
           {renderItem(item)}
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

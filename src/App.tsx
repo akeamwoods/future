@@ -14,11 +14,12 @@ function App() {
   const { data: offers, isLoading, isError } = useOffers();
   const [isTableView, setIsTableView] = useState(true);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error fetching offers</p>;
+  if (isLoading) return <p>Loading offers, please wait...</p>;
+  if (isError)
+    return <p>There was an error fetching offers. Please try again later.</p>;
 
   return (
-    <div className="mx-auto max-w-7xl p-5">
+    <div className="mx-auto max-w-7xl p-5" role="main">
       <header className="flex items-center justify-between mb-8">
         <img src="/future.svg" alt="Background Curve" className="h-16 w-auto" />
         <button

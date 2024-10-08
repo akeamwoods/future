@@ -28,9 +28,8 @@
 }
 
 .offer-link {
-  @apply bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600 transition mt-auto self-center sm:self-start;
+  @apply bg-blue-500 text-white font-semibold px-3 py-1 rounded hover:bg-blue-600 transition mt-auto self-center sm:self-start cursor-pointer;
 }
-
 .merchant-section {
   @apply w-full sm:w-32 h-32 flex-shrink-0 flex items-center justify-center mt-4 sm:mt-0;
 }

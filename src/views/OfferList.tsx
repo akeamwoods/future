@@ -34,14 +34,13 @@ const OfferList: React.FC<OfferListProps> = ({ offers }) => {
                 ? `${decode(offer.offer.currency_symbol)}${offer.offer.price} ${offer.offer.currency_iso}`
                 : 'Price Not Available'}
             </p>
-            <a
-              href={offer.offer.link}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
               className="offer-link"
+              onClick={() => window.open(offer.offer.link, '_blank')}
+              aria-label={`View offer on ${offer.merchant.name || 'Merchant link'}`}
             >
               View offer on {offer.merchant.name || 'Merchant'}
-            </a>
+            </button>
           </div>
           <div className="merchant-section">
             {offer.merchant.logo_url ? (
