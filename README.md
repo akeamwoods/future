@@ -35,7 +35,8 @@ For code quality and styling this project has pre-commit hooks setup to automati
 - prettier
 - lint-staged
   The commits are automatically formatted as well using prettier to ensure consistency. Here's an example of some broken code and what it looks like:
-  <img width="362" alt="broken-code" src="https://github.com/user-attachments/assets/1fac76a8-fbbd-405b-b9bd-c5c3a448dba6">
+  
+<img width="362" alt="broken-code" src="https://github.com/user-attachments/assets/1fac76a8-fbbd-405b-b9bd-c5c3a448dba6">
 
 Trying to commit the above code is prevented by this setup as shown below:
 
