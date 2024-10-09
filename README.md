@@ -77,6 +77,7 @@ This way, I can import everything from a single source, like this:
 ## API Setup and Separation of Concerns
 
 In this project, I've structured the API logic to follow separation of concerns principles. Rather than fetching data directly in components, the logic is handled within an api folder, making it easier to maintain, scale, and test.
+
 Folder Structure:
 
 - api/baseApi.ts - contains the base API client which uses Axios to handle HTTP requests and a helper get method to simplify GET requests
