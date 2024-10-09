@@ -26,7 +26,6 @@ const Table = <T extends object>({
     data-testid={`${testId}-container`}
   >
     <table className="table" data-testid={`${testId}`}>
-      <caption className="sr-only">Product Offers</caption>
       <thead className="table-header" data-testid={`${testId}-header`}>
         <tr>
           {columns.map((column) => (

@@ -1,8 +1,8 @@
-import { Suspense, useState } from 'react';
-import React from 'react';
+import React, { Suspense, useState } from 'react';
 import { useOffers } from '@hooks';
 import { SkeletonTable } from '@components';
 import { Columns } from '@views';
+import { getBaseUrl } from '@utils';
 
 // Code splitting/lazy loading for better performance
 const OfferList = React.lazy(() =>
@@ -22,7 +22,11 @@ function App() {
   return (
     <div className="mx-auto max-w-7xl p-5" role="main">
       <header className="flex items-center justify-between mb-8">
-        <img src="/future.svg" alt="Background Curve" className="h-16 w-auto" />
+        <img
+          src={`${getBaseUrl()}future.svg`}
+          alt="Future Logo"
+          className="h-16 w-auto"
+        />
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-3 py-2 rounded-lg shadow-lg transition duration-200"
           onClick={() => setIsTableView(!isTableView)}

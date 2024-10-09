@@ -35,6 +35,8 @@
       "@test/*": ["src/test/*"],
       "@types": ["src/types"],
       "@types/*": ["src/types/*"],
+      "@utils": ["src/utils"],
+      "@utils/*": ["src/utils/*"],
       "@views": ["src/views"],
       "@views/*": ["src/views/*"]
     }

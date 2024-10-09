@@ -10,7 +10,7 @@ interface OfferListProps {
 
 const OfferList: React.FC<OfferListProps> = ({ offers }) => {
   return (
-    <List
+    <List<OfferOverview>
       data={offers}
       testId="offers-list"
       renderItem={(offer) => (

@@ -21,6 +21,8 @@ export default {
     '^@test$': '<rootDir>/src/test',
     '^@types/(.*)$': '<rootDir>/src/types/$1',
     '^@types$': '<rootDir>/src/types',
+    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@utils$': '<rootDir>/src/utils',
     '^@views/(.*)$': '<rootDir>/src/views/$1',
     '^@views$': '<rootDir>/src/views',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',

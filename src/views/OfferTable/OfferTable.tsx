@@ -8,7 +8,9 @@ interface OfferTableProps {
 }
 
 const OfferTable: React.FC<OfferTableProps> = ({ data }) => {
-  return <Table data={data} columns={Columns} testId="offers-table" />;
+  return (
+    <Table<OfferOverview> data={data} columns={Columns} testId="offers-table" />
+  );
 };
 
 export default OfferTable;

@@ -7,6 +7,10 @@ jest.mock('@api', () => ({
   fetchOffers: jest.fn(),
 }));
 
+jest.mock('@utils', () => ({
+  getBaseUrl: jest.fn(() => '/test/'),
+}));
+
 describe('App tests', () => {
   beforeEach(() => {
     jest.useFakeTimers();
